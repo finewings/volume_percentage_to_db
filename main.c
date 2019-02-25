@@ -3,10 +3,15 @@
 #define _GNU_SOURCE
 #include <math.h>
 
-// Percentage to dB
-// min:  		Minimum volume in dB
-// max:  		Maximum volume in dB
-// percentage:	Percentage of volume. Between 0 ~ 100
+/**
+ * @brief 	Convert volume in percentage to volume in dB.
+ *
+ * @param min	  		Minimum volume in dB.
+ * @param max  			Maximum volume in dB.
+ * @param percentage	Volume in dB. Between min ~ max.
+ *
+ * @return		Return volume in dB
+ */
 double volume_percentage_to_db(
 	double min, 			
 	double max,			
@@ -19,10 +24,15 @@ double volume_percentage_to_db(
 	return value;
 }
 
-// dB to percentage
-// min:  		Minimum volume in dB
-// max:  		Maximum volume in dB
-// value:		Volume in dB. Between min ~ max
+/**
+ * @brief 	Convert volume in dB to volume in percentage.
+ *
+ * @param min	  		Minimum volume in dB.
+ * @param max	  		Maximum volume in dB.
+ * @param value			Volume in dB. Between min ~ max.
+ *
+ * @return		Return volume in percentage
+ */
 int volume_db_to_percentage(
 	double min, 
 	double max, 
@@ -49,6 +59,6 @@ int main(int argc, char **argv)
 	}
 	else
 	{
-		printf("Usage: test min_db max_db percentage\n");
+		printf("Usage: test min_in_dB max_in_dB volume_in_percentage\n");
 	}
 }
