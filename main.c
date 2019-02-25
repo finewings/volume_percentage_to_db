@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include <stdio.h>
-#define _GNU_SOURCE
 #include <math.h>
 
 /**
@@ -18,9 +17,9 @@ double volume_percentage_to_db(
 	int percentage				
 	)
 {
-	double min_norm = exp10((min - max) / 60.0);
+	double min_norm = pow(10.0f, (min - max) / 60.0f);
 	double val_norm = min_norm +  (1 - min_norm) * percentage / 100;
-	double value = max + 60.0 * log10(val_norm);
+	double value = max + 60.0f * log10(val_norm);
 	return value;
 }
 
@@ -39,9 +38,9 @@ int volume_db_to_percentage(
 	double value
 	)
 {
-	double min_norm = exp10((min - max) / 60.0);
-	double val_norm = exp10((value - max) / 60.0);
-	int percent = rint((val_norm - min_norm) * 100 / (1 - min_norm));	
+	double min_norm = pow(10.0f, (min - max) / 60.0f);
+	double val_norm = pow(10.0f, (value - max) / 60.0f);
+	int percent = (int)rint((val_norm - min_norm) * 100 / (1 - min_norm));	
 	return percent;
 }
 
